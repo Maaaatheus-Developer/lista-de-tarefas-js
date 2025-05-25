@@ -52,6 +52,8 @@ function removerTarefa(i) {
   mensagemAposAdicionarTarefa.textContent = "Tarefa removida com sucesso!";
   mensagemAposAdicionarTarefa.style.color = "#e61919";
   renderizarTarefas();
+  botaoLimparLista.style.display =
+  tarefas.length <= 0 ? "none" : "inline-block";
 }
 
 //Funcao editarTarefa recebe o valor do índice do array como argumento e assim ela tem acesso a ele
@@ -71,4 +73,6 @@ function limparLista() {
   renderizarTarefas();
   const mensagem = document.getElementById("mensagem");
   mensagem.textContent = "Lista de tarefas limpa com sucesso!";
+  botaoLimparLista.style.display =
+  tarefas.length <= 0 ? "none" : "inline-block";
 }
