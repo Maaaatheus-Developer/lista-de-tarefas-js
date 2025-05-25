@@ -1,5 +1,5 @@
 let tarefas = [];
-let botoes = document.getElementById("botoes");
+let botaoLimparLista = document.getElementById("limparlista");
 let mensagemAposAdicionarTarefa = document.getElementById("mensagem");
 
 function adicionarTarefa() {
@@ -15,15 +15,8 @@ function adicionarTarefa() {
     mensagemAposAdicionarTarefa.style.color = "#3c7319";
     tarefas.push(valorTarefa);
     renderizarTarefas();
-
-    if (tarefas.length !== "") {
-      let botaoLimparLista = document.createElement("button");
-      botaoLimparLista.textContent = "Limpar tudo";
-      botaoLimparLista.className = "botao_lista";
-      botoes.appendChild(botaoLimparLista);
-      botaoLimparLista.onclick = () => limparLista();
-    }
   }
+
   inputTarefa.value = "";
 }
 
@@ -44,9 +37,12 @@ function renderizarTarefas() {
     botaoEditar.textContent = "Editar";
     botaoEditar.onclick = () => editarTarefa(i); //É passado para a função editarTarefa o valor do indice (i) do array da respectiva tarefa
 
-    lista.appendChild(criarLinha);
-    criarLinha.appendChild(botaoRemover);
-    criarLinha.appendChild(botaoEditar);
+    botaoLimparLista.style.display =
+      tarefas.length > 0 ? "inline-block" : "none";
+
+    lista.appendChild(criarLinha); //Adiciona a linha dentro do elemento maior, no caso a ul
+    criarLinha.appendChild(botaoRemover); //Adiciona o botão de remover dentro da linha <li>
+    criarLinha.appendChild(botaoEditar); //Adiciona o botão de editar dentro da <li>
   }
 }
 
@@ -63,7 +59,7 @@ function editarTarefa(i) {
   let valorEditar = window.prompt("Digite o novo valor");
   if (valorEditar.trim() !== "") {
     tarefas[i] = valorEditar;
-    mensagemAposAdicionarTarefa.textContent = "Tarefa atualizado com sucesso!"
+    mensagemAposAdicionarTarefa.textContent = "Tarefa atualizado com sucesso!";
     renderizarTarefas();
   } else {
     window.alert("Digite um valor valido");

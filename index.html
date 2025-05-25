@@ -16,13 +16,18 @@
       <h1>Lista de tarefas 📃</h1>
       <p>Adicione suas tarefas!</p>
       <input type="text" id="inputTarefa" placeholder="Digite sua tarefa" />
-      <div id="botoes">
-        <button value="Adicionar tarefa" onclick="adicionarTarefa()">
-          Adiciona tarefa
-        </button>
-      </div>
+      <button value="Adicionar tarefa" onclick="adicionarTarefa()">
+        Adiciona tarefa
+      </button>
 
-      <!-- <button class="botao_lista" onclick="limparLista()">Limpar tudo</button> -->
+      <button
+        id="limparlista"
+        class="botao_lista"
+        onclick="limparLista()"
+        style="display: none"
+      >
+        Limpar tudo
+      </button>
       <p id="mensagem"></p>
       <ul id="lista"></ul>
     </div>
